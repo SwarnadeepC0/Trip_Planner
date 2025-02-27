@@ -4,6 +4,7 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentLink;
 import com.stripe.model.Price;
+import com.stripe.net.RequestOptions;
 import com.stripe.param.PaymentLinkCreateParams;
 import com.stripe.param.PriceCreateParams;
 import io.hotel.manage.models.Billing;
@@ -43,8 +44,12 @@ public class StripePaymentService implements PaymentService {
                                         .build()
                         )
                         .build();
-
-            PaymentLink paymentLink = PaymentLink.create(paymentLinkCreateParams);
+            RequestOptions options =
+                    RequestOptions.builder()
+                            .setIdempotencyKey(price.getId())
+                            .build();
+            PaymentLink paymentLink = PaymentLink.create(paymentLinkCreateParams, options);
+            System.out.println(paymentLink.getId());
             return paymentLink.getUrl();
         } catch (StripeException e) {
             throw new RuntimeException(e);
