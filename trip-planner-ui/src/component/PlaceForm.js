@@ -104,7 +104,7 @@ class PlaceForm extends Component {
                     <input type="range" min="10" max="500" value={this.state.radius} class="slider" id="myRange" onChange={this.handleChangeRadius}/>
                 </div>
                 <div>
-                    <button class="glow-on-hover" type="button" onClick={this.handleClick}>Submit!</button>
+                    <button class="glow-on-hover" type="button" onClick={this.handleClick}><b>Submit</b></button>
                 </div>
             </div>
             <section class="tiles-container">
