@@ -1,0 +1,236 @@
+body {
+  margin: 0;
+  font-family: 'Times New Roman', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("../public/travel-ui.avif");
+  height: 100%;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input {
+  border-radius: 10px;
+}
+
+.header {
+  height: 40px;
+  border-bottom: 1px solid #EEE;
+  background-color: #ffffff;
+  height: 40px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  text-align: center;
+  text-shadow: 2px 2px #a4c2f1;
+  font-size: 40px;
+  font-family: Tahoma, sans-serif;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  input[type='range'] {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none;
+    background-color: #fffefe;
+    
+  }
+  
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+  margin-bottom: 40px;
+  padding: 10px;
+  text-shadow: 1px 1px #ccc;
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 12px; /* Specified height */
+  background: hsl(0, 0%, 94%); /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-runnable-track {
+ height: 15px;
+  background: hsl(212, 72%, 80%);
+  border-radius: 16px;
+  
+}
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  border-radius: 50%;
+  width: 15px; /* Set a specific slider handle width */
+  height: 15px; /* Slider handle height */
+  background: hsl(0, 0%, 100%);
+  border: 3px solid #2205fc;
+  cursor: pointer; /* Cursor on hover */
+  box-shadow: -407px 0 0 400px hsl(233, 100%, 52%);
+  
+}
+
+.slider:active::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  border-radius: 50%;
+  width: 15px; /* Set a specific slider handle width */
+  height: 15px; /* Slider handle height */
+  background: hsl(245, 98%, 48%);
+  border: 3px solid rgb(255, 255, 255);
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 15px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: hsl(238, 95%, 51%); /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+}
+
+.glow-on-hover {
+  width: 100%;
+  height: 30px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #0b0a1b;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #7acbe6, #75d5f0, #06d1ff, #0f07f3, #00ffd5, #002bff, #0d82e1, #808de0, #a0e0f1);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #130790
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #022bfb;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 40% 0; }
+  100% { background-position: 0 0; }
+}
+
+.tiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.tile {
+  flex: 1 0 200px;
+  width: 30%;
+  background-color: #051f7c;
+  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+  opacity: 0.9;
+  
+}
+
+.tile h3 {
+  border-bottom: 1px solid #EEE;
+  font-size: 1vw;
+  font-family: Georgia, serif;
+  font-variant: small-caps;
+  color: #fff;
+  opacity: 1;
+  text-align: center;
+}
+
+.tile table {
+  width: 100%;
+}
+.tile table tr {
+  width: 100%;
+  
+  color: #ccc;
+}
+
+.tile th {
+  padding: 5px;
+  font: small-caps bold 10px/10px Georgia, serif;
+}
+
+.tile p {
+  color: #97979c;
+  opacity: 1;
+  font: x-small bolder 12px/20px 'American Typewriter', serif;
+}
+
+#rating {
+  padding: 5px;
+  text-align: left;
+}
+
+#type {
+  padding: 5px;
+  text-align: right;
+}
+
+.tile table {
+  border-right: 30px;
+}
+
+.tile:hover {
+  transform: scale(1.05);
+}

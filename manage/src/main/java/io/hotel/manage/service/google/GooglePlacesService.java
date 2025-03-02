@@ -35,6 +35,9 @@ public class GooglePlacesService implements PlacesService {
                 .retrieve()
                 .bodyToMono(String.class).block();
         JSONObject jsonObject = new JSONObject(response);
+        if(jsonObject.isEmpty()){
+            return placesList.iterator();
+        }
         JSONArray places = jsonObject.getJSONArray("places");
         for(int i = 0; i < places.length(); i++)
         {
