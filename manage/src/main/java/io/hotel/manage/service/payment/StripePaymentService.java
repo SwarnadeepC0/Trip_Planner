@@ -10,10 +10,14 @@ import com.stripe.param.PriceCreateParams;
 import io.hotel.manage.models.Billing;
 import io.hotel.manage.models.Booking;
 import io.hotel.manage.service.PaymentService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service("stripe")
 public class StripePaymentService implements PaymentService {
+    @Value("${stripe.api.key}")
+    private String apiKey;
+
     @Override
     public Billing pay(Booking booking) {
         return null;
@@ -22,7 +26,7 @@ public class StripePaymentService implements PaymentService {
     @Override
     public String getPaymentLink(Booking booking) {
         try {
-        Stripe.apiKey = "sk_test_51QvnUR06tJuHilGedC2NggkI14JWDNElZ8ntWklz1PmrY5oajwgwK38YehqFBTqUQsJU9lUSMTY1GTJtpyUfnB6m00qLKR19Rt";
+        Stripe.apiKey = this.apiKey;
         PriceCreateParams params =
                 PriceCreateParams.builder()
                         .setCurrency("INR")
