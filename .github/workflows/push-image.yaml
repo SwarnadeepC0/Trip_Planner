@@ -22,13 +22,13 @@ jobs:
 
       - name: Pull Image from Source Artifact Registry
         run: |
-          docker pull asia-south1-docker.pkg.dev/swarna-380521/docker-staging/hello-app:latest
+          docker pull asia-south1-docker.pkg.dev/swarna-380521/docker-staging/hello-app:1.0
 
 
       - name: Tag Image for Destination Artifact Registry
         run: |
-          docker tag asia-south1-docker.pkg.dev/swarna-380521/docker-staging/hello-app:latest \
-                     asia-south1-docker.pkg.dev/swarna-380521/cloud-run-source-deploy/hello-app:latest
+          docker tag asia-south1-docker.pkg.dev/swarna-380521/docker-staging/hello-app:1.0 \
+                     asia-south1-docker.pkg.dev/swarna-380521/cloud-run-source-deploy/hello-app:1.0
 
       - name: Push Docker Image
         run: |
