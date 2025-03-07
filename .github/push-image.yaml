@@ -1,0 +1,35 @@
+name: Push Docker Image to Google Artifact Registry
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to main branch
+
+jobs:
+  push-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud (User Account)
+        run: |
+          echo "ya29.a0AeXRPp4RfliMVAjHOU-quBJYMzjUeMPtcYIm5fY-EVYfHdMg6BQwlFZ62M3zQ4sKpnEYmaPgjxiuSVqVaIPnefv6_gRcoqaFRERFrke8PvOL1KGtMZ5ZR6pJgzumUE3Fzikv9fd7deaXV9rZKz5mtaqk3E8H7BSIaep9cYV77KLC4waCgYKAdESARESFQHGX2MiX7O9aZWF2pbfJy8KE_bvsQ0181" | gcloud auth activate-refresh-token shushankbhatia@gmail.com
+
+      - name: Configure Docker Authentication
+        run: gcloud auth configure-docker asia-south1-docker.pkg.dev
+
+      - name: Pull Image from Source Artifact Registry
+        run: |
+          docker pull asia-south1-docker.pkg.dev/swarna-380521/docker-staging/hello-app:latest
+
+
+      - name: Tag Image for Destination Artifact Registry
+        run: |
+          docker tag asia-south1-docker.pkg.dev/swarna-380521/docker-staging/hello-app:latest \
+                     asia-south1-docker.pkg.dev/swarna-380521/cloud-run-source-deploy/hello-app:latest
+
+      - name: Push Docker Image
+        run: |
+          docker push asia-south1-docker.pkg.dev/swarna-380521/cloud-run-source-deploy/hello-app:1.0
